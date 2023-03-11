@@ -16,7 +16,7 @@ exports.uploadImage =  (req, res) => {
 
 exports.getImage = async (req, res) => {
     const file = bucket
-    .findOne({
+    .find({
       filename: req.params.filename
     })
     .toArray((err, files) => {

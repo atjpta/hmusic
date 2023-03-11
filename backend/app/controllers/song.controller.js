@@ -8,6 +8,7 @@ mongoose.connection.on("connected", () => {
   bucket = new mongoose.mongo.GridFSBucket(db, {
     bucketName: "songs"
   });
+  console.log("Conneted bucket to the database!");
 });
 
 exports.uploadMusic = (req, res) => {
@@ -15,7 +16,7 @@ exports.uploadMusic = (req, res) => {
 }
 
 exports.getSong = async (req, res) => {
-  const file = bucket.findOne({
+  const file = bucket.find({
     filename: req.params.filename
   })
     .toArray((err, files) => {
