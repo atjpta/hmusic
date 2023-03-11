@@ -10,15 +10,14 @@ mongoose.connection.on("connected", () => {
   });
 });
 
-exports.uploadMusic =  (req, res) => {
+exports.uploadMusic = (req, res) => {
   res.status(200).send("File uploaded successfully");
 }
 
 exports.getSong = async (req, res) => {
-    const file = bucket
-    .find({
-      filename: req.params.filename
-    })
+  const file = bucket.findOne({
+    filename: req.params.filename
+  })
     .toArray((err, files) => {
       if (!files || files.length === 0) {
         return res.status(404)
@@ -36,5 +35,6 @@ exports.getSong = async (req, res) => {
 
 
 
-  
-  
+
+
+
