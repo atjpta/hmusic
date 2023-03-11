@@ -30,7 +30,7 @@
           <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
               <div class="w-12 rounded-full">
-                <img src="../../../public/imgs/avatar.jpg" />
+                <img src="~~/assets/images/meo.jpg" />
               </div>
             </label>
             <ul
@@ -39,7 +39,7 @@
             >
               <div class="avatar">
                 <div class="w-12 h-12 rounded-full">
-                  <img src="../../../public/imgs/avatar.jpg" />
+                  <img src="~~/assets/images/meo.jpg" />
                 </div>
                 <p class="mt-3 px-2">{{ useAuth.user.name }}</p>
               </div>
