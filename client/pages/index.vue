@@ -1,45 +1,15 @@
 <template>
   <div>
-    ghergheri
-    <!-- <div @click="openDialogSignin()" class="btn">
-      nút này cần đăng nhập mới hiện thêm nội dung
-    </div>
-    <div v-if="useAuth.isUserLoggedIn">
-      đang là nội dung cần đăng nhập mới xem dc
-    </div>
-    {{ useAuth.user }}
-
-     <NuxtLink to="/test2" @click="openDialogSignin()" class="btn">
-      nút này cần đăng nhập mới qua được trang test2
-    </NuxtLink> -->
+    ghkjeopghjp gregre
+    <audio controls :loop="loop">
+      <source
+        src="https://hmusic-api.vercel.app/api/song/Aki%20Misato%20-%20Snow%20Maiden%20(Sunoumewiden).mp3"
+        type="audio/mpeg"
+      />
+    </audio>
   </div>
 </template>
 
-<script setup>
-import { authStore } from "~~/stores/auth.store";
-import { dialogStore } from "../stores/dialog.store";
-const useAuth = authStore();
-const useDialog = dialogStore();
-
-function openDialogSignin() {
-  if (!useAuth.isUserLoggedIn) {
-    useDialog.showDialog(
-      {
-        title: "Thông báo cực căng!",
-        content: "bạn cần đăng nhập để thấy nội dung",
-        btn1: "đăng nhập",
-        btn2: "hủy",
-      },
-      () => {
-        navigateTo("/auth/signin");
-      }
-    );
-  } else {
-    console.log("đã đăng nhập");
-  }
-}
-
-onMounted(() => {});
-</script>
+<script setup></script>
 
 <style></style>
