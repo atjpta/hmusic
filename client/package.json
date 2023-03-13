@@ -17,8 +17,10 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@nuxtjs/supabase": "^0.3.1",
     "@pinia/nuxt": "^0.4.6",
     "daisyui": "^2.45.0",
+    "firebase": "^9.17.2",
     "theme-change": "^2.2.0",
     "vee-validate": "^4.7.3",
     "yup": "^0.32.11"

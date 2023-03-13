@@ -1,6 +1,5 @@
 const user = require("./user.models");
 const roleM = require("./role.models");
-const image = require('./image.models');
 const genre = require("./genre.models")
 const singer = require("./singer.models")
 const artist = require("./artist.models")
@@ -17,7 +16,6 @@ function innitDB (){
 module.exports = {
     user,
     role,
-    image,
     genre,
     singer,
     artist,

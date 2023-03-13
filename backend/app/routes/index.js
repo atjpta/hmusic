@@ -5,8 +5,6 @@ const artist = require('./artist.routes')
 const singer = require('./singer.routes')
 const country = require('./country.routes')
 const music = require('./music.routes')
-const song = require('./song.routes');
-const image = require('./image.routes');
 const favorite = require('./favorite.routes');
 const playlist = require('./playlist.routes')
 
@@ -18,8 +16,6 @@ exports.Start = (app) => {
     singer(app)
     country(app)
     music(app)
-    song(app)
-    image(app)
     favorite(app)
     playlist(app)
 }

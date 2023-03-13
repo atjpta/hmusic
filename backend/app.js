@@ -12,12 +12,13 @@ app.use(express.urlencoded({
     })
 );
 
+route.Start(app);
+
 app.get("/", (req, res) => {
   res.status(200).json({ message: "welcome" + req.url});
 });
 
 
-route.Start(app);
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credentials", true)
