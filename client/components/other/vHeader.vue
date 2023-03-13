@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="bg-base-100 border-b-2 flex py-1 justify-between">
-      <div class="flex space-x-1">
+      <div class="flex space-x-1 mx-1">
         <div class="btn">
           <OtherVIcon icon="fa-solid fa-magnifying-glass" />
         </div>
@@ -19,14 +19,14 @@
         <NuxtLink
           to="/auth/signin"
           v-if="!useAuth.isUserLoggedIn"
-          class="ml-1 btn btn-outline btn-primary"
+          class="mx-1 btn btn-outline btn-primary"
         >
           đăng nhập
         </NuxtLink>
         <!-- </router-link> -->
 
         <!-- dropdown avatar -->
-        <div v-if="useAuth.isUserLoggedIn" class="flex-none gap-2 ml-1">
+        <div v-if="useAuth.isUserLoggedIn" class="flex-none gap-2 mx-1">
           <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
               <div class="w-12 rounded-full">

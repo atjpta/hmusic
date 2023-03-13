@@ -36,7 +36,7 @@
       @mouseenter="showtext = true"
       @mouseleave="showtext = false"
       :class="[showtext ? 'hover:w-60 hover:overflow-y-auto' : ' w-14']"
-      class="duration-500 overflow-hidden lg:invisible visible h-screen w-16 bg-base-300/50 glass"
+      class="duration-500 sm:overflow-hidden overflow-y-auto lg:invisible visible h-screen w-16 bg-base-300/50 glass"
     >
       <div>
         <!-- logo -->
@@ -46,13 +46,21 @@
           </div>
           <div class="mx-auto animate-ping border-b-2 border-blue-500 h-3 w-20"></div>
         </div>
+        <div
+          :class="[showtext ? 'rotate-180 ' : '']"
+          class="sticky top-5 mx-2 duration-500 z-30"
+        >
+          <div @click="openNav()" class="btn opacity-50">
+            <OtherVIcon class-icon="text-2xl" icon="fa-solid fa-chevron-right" />
+          </div>
+        </div>
 
         <div class="h-fit z-20">
           <ul class="menu">
             <div v-for="i in dataNav" :key="i">
               <div v-for="j in i" :key="j.name">
                 <li class="hover-bordered">
-                  <nuxt-link :to="j.url">
+                  <nuxt-link @click="showtext = false" :to="j.url">
                     <OtherVIcon class-icon="text-2xl" :icon="j.icon" />
                     <div :class="[showtext ? 'w-60' : '']">
                       {{ showtext ? j.name : "" }}
@@ -66,14 +74,6 @@
         </div>
 
         <div class="h-20"></div>
-        <div
-          :class="[showtext ? 'rotate-180 ' : '']"
-          class="sticky bottom-20 mx-2 duration-500"
-        >
-          <div @click="openNav()" class="btn">
-            <OtherVIcon class-icon="text-xl" icon="fa-solid fa-chevron-right" />
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -104,6 +104,33 @@ const dataNav = ref([
       name: "Chart",
       url: "/chart",
       icon: "fa-solid fa-chart-line",
+    },
+    {
+      name: "test",
+      url: "/test",
+      icon: "fa-solid fa-vial-circle-check",
+    },
+  ],
+  [
+    {
+      name: "Nhạc mới",
+      url: "/music",
+      icon: "fa-solid fa-music",
+    },
+    {
+      name: "Thể loại",
+      url: "/genre",
+      icon: "fa-solid fa-table-cells-large",
+    },
+    {
+      name: "Top 100",
+      url: "/rank",
+      icon: "fa-solid fa-ranking-star",
+    },
+    {
+      name: "Playlist",
+      url: "/playlist",
+      icon: "fa-solid fa-icons",
     },
   ],
   [

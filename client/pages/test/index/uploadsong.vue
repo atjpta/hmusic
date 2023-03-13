@@ -1,6 +1,5 @@
 <template>
   <div>
-    beltbl
     <input type="file" @change="useSong.previewFiles($event)" />
     <audio controls>
       <source

@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <nuxt-link class="btn" to="/test/uploadsong">chuyển qua trang test song</nuxt-link>
-  </div>
+  <div>trang chủ</div>
 </template>
 
 <script>
