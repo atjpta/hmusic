@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div class="">
     <OtherVAlert />
     <OtherVDialog />
 
-    <OtherVNav class="fixed z-20" />
-    <div class="ml-16 lg:ml-60">
-      <VHeader class="" />
-      <div class="">
+    <div class="">
+      <OtherVHeader class="sticky top-0 z-10" />
+      <div class="lg:mx-0 lg:pl-60">
         <slot />
       </div>
     </div>
@@ -14,8 +13,6 @@
   </div>
 </template>
 
-<script setup>
-import VHeader from "~~/components/other/vHeader.vue";
-</script>
+<script setup></script>
 
 <style></style>

@@ -1,79 +1,28 @@
 <template>
   <div class="">
-    <!-- cho máy tính -->
-    <div class="lg:flex hover:overflow-y-auto hidden h-screen w-60 bg-base-300/50 glass">
-      <div class="w-full">
-        <!-- logo -->
-        <div class="pt-1 text-center">
-          <div to="/" class="btn btn-ghost text-2xl font-bold">HMusic</div>
-          <div class="mx-auto animate-ping border-b-2 border-blue-500 h-3 w-20"></div>
-        </div>
-
-        <div class="h-fit z-20">
-          <ul class="menu">
-            <div v-for="i in dataNav" :key="i">
-              <div v-for="j in i" :key="j.name">
-                <li class="hover-bordered">
-                  <nuxt-link :to="j.url">
-                    <OtherVIcon class-icon="text-2xl" :icon="j.icon" />
-                    <div :class="[showtext ? 'w-60' : '']">
-                      {{ j.name }}
-                    </div>
-                  </nuxt-link>
-                </li>
-              </div>
-              <div class="divider px-5"></div>
-            </div>
-          </ul>
-        </div>
-
-        <div class="h-20"></div>
-      </div>
-    </div>
-
     <!-- cho mobie -->
-    <div
-      @mouseenter="showtext = true"
-      @mouseleave="showtext = false"
-      :class="[showtext ? 'hover:w-60 hover:overflow-y-auto' : ' w-14']"
-      class="duration-500 sm:overflow-hidden overflow-y-auto lg:invisible visible h-screen w-16 bg-base-300/50 glass"
-    >
-      <div>
-        <!-- logo -->
-        <div class="pt-1 text-center">
-          <div class="btn btn-ghost text-2xl font-bold">
-            {{ showtext ? "HMusic" : "H" }}
-          </div>
-          <div class="mx-auto animate-ping border-b-2 border-blue-500 h-3 w-20"></div>
+    <div class="dropdown lg:dropdown-open">
+      <label tabindex="0" class="">
+        <div class="btn btn-ghost rounded-none">
+          <OtherVIcon class-icon="text-2xl" icon="fa-solid fa-bars" />
         </div>
-        <div
-          :class="[showtext ? 'rotate-180 ' : '']"
-          class="sticky top-5 mx-2 duration-500 z-30"
-        >
-          <div @click="openNav()" class="btn opacity-50">
-            <OtherVIcon class-icon="text-2xl" icon="fa-solid fa-chevron-right" />
-          </div>
-        </div>
-
-        <div class="h-fit z-20">
-          <ul class="menu">
-            <div v-for="i in dataNav" :key="i">
-              <div v-for="j in i" :key="j.name">
-                <li class="hover-bordered">
-                  <nuxt-link @click="showtext = false" :to="j.url">
-                    <OtherVIcon class-icon="text-2xl" :icon="j.icon" />
-                    <div :class="[showtext ? 'w-60' : '']">
-                      {{ showtext ? j.name : "" }}
-                    </div>
-                  </nuxt-link>
-                </li>
-              </div>
-              <div class="divider px-5"></div>
+      </label>
+      <div tabindex="0" class="dropdown-content mt-1 bg-base-100 w-60 h-screen">
+        <ul class="menu">
+          <div v-for="i in dataNav" :key="i">
+            <div v-for="j in i" :key="j.name">
+              <li class="hover-bordered">
+                <nuxt-link :to="j.url">
+                  <OtherVIcon class-icon="text-2xl" :icon="j.icon" />
+                  <div class="text-base">
+                    {{ j.name }}
+                  </div>
+                </nuxt-link>
+              </li>
             </div>
-          </ul>
-        </div>
-
-        <div class="h-20"></div>
+            <div v-if="i != dataNav[dataNav.length - 1]" class="divider px-5"></div>
+          </div>
+        </ul>
       </div>
     </div>
   </div>
@@ -82,6 +31,7 @@
 <script setup>
 const showtext = ref(false);
 const open = ref(false);
+
 const dataNav = ref([
   [
     {

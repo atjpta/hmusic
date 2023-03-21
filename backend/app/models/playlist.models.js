@@ -10,6 +10,9 @@ const schema = mongoose.Schema(
         img: {
             type: String,
         },
+        view: {
+            type: String,
+        },
         list: [
             {
                 type: mongoose.Schema.Types.ObjectId,
