@@ -3,11 +3,11 @@
     <!-- cho mobie -->
     <div class="dropdown lg:dropdown-open">
       <label tabindex="0" class="">
-        <div class="btn btn-ghost rounded-none">
+        <div class="lg:hidden btn btn-ghost rounded-none">
           <OtherVIcon class-icon="text-2xl" icon="fa-solid fa-bars" />
         </div>
       </label>
-      <div tabindex="0" class="dropdown-content mt-1 bg-base-100 w-60 h-screen">
+      <div tabindex="0" class="dropdown-content lg:mt-9 mt-1 pb-36 bg-base-100 w-60 h-screen hover:overflow-y-auto">
         <ul class="menu">
           <div v-for="i in dataNav" :key="i">
             <div v-for="j in i" :key="j.name">
@@ -151,13 +151,16 @@ onUpdated(() => {
 .bounce-enter-active {
   animation: bounce-in 0.5s;
 }
+
 .bounce2-leave-active {
   animation: bounce-in 0.5s reverse;
 }
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }

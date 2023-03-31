@@ -4,13 +4,10 @@
       <div class="flex justify-between">
         <div class="flex">
           <OtherVNav @click="open = true" />
-          <div
-            @click="navigateTo('/')"
-            class="btn btn-ghost bg-transparent hover:bg-transparent text-xl font-bold"
-          >
+          <div @click="navigateTo('/')"
+            class="lg:ml-10 btn btn-ghost bg-transparent hover:bg-transparent text-xl font-bold">
             <span
-              class="before:block before:absolute before:-inset-1 before:-skew-x-12 before:rounded-tl-full before:rounded-br-full before:bg-gradient-to-r before:from-indigo-500 before:via-purple-500 before:to-pink-500 relative inline-block"
-            >
+              class="before:block before:absolute before:-inset-1 before:-skew-x-12 before:rounded-tl-full before:rounded-br-full before:bg-gradient-to-r before:from-green-400 before:via-cyan-400 before:to-blue-400 relative inline-block">
               <span class="relative text-white px-3">Hmusic</span>
             </span>
           </div>
@@ -20,11 +17,7 @@
             <OtherVIcon icon="fa-solid fa-magnifying-glass" />
           </button>
           <div class="">
-            <input
-              type="text"
-              placeholder="Tìm kiếm...."
-              class="input md:w-96 input-bordered mx-1"
-            />
+            <input type="text" placeholder="Tìm kiếm...." class="input md:w-96 input-bordered mx-1" />
           </div>
         </div>
         <div class="flex">

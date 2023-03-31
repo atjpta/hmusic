@@ -14,9 +14,9 @@ export const userStore = defineStore("userStore", {
     },
     actions: {
         async findOne(id) {
-            this.user = await userService.findOne(id);
+            // this.user = await userService.findOne(id);
         },
-       
+
         clear() {
             this.user = {};
         },

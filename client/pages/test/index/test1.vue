@@ -1,21 +1,9 @@
 <template>
-  <div>
-    test1
-  </div>
+  <div>rheoig</div>
 </template>
 
-<script setup>
-
-definePageMeta({
-  middleware: ["auth"]
-  // or middleware: 'auth'
-})
-
-onBeforeMount(() => { 
-    console.log('gehrougiehr');
-})
+<script>
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>
