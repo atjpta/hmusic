@@ -42,6 +42,7 @@ export const imageStore = defineStore("imageStore", {
             this.previewImage = null;
             this.image = null;
             this.url = null;
+            this.name = null;
         },
     }
 }

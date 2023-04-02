@@ -19,6 +19,9 @@ const schema = mongoose.Schema(
                 ref: "music"
             }
         ],
+    },
+    {
+        timestamps: true,
     }
 );
 

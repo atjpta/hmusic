@@ -4,6 +4,9 @@ const schema = mongoose.Schema(
     {
         name: String,
         url_image: String,
+    },
+    {
+        timestamps: true,
     }
 );
 

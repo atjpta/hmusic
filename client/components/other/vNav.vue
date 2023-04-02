@@ -7,22 +7,24 @@
           <OtherVIcon class-icon="text-2xl" icon="fa-solid fa-bars" />
         </div>
       </label>
-      <div tabindex="0" class="dropdown-content lg:mt-9 mt-1 pb-36 bg-base-100 w-60 h-screen hover:overflow-y-auto">
-        <ul class="menu">
-          <div v-for="i in dataNav" :key="i">
-            <div v-for="j in i" :key="j.name">
-              <li class="hover-bordered">
-                <nuxt-link :to="j.url">
-                  <OtherVIcon class-icon="text-2xl" :icon="j.icon" />
-                  <div class="text-base">
-                    {{ j.name }}
-                  </div>
-                </nuxt-link>
-              </li>
+      <div tabindex="0" class="dropdown-content lg:mt-8 mt-1 pb-36 bg-base-100 w-60 h-screen hover:overflow-y-auto">
+        <div class="bg-gradient-to-r from-green-400/20 via-cyan-400/20 to-blue-400/20">
+          <ul class="menu">
+            <div v-for="i in dataNav" :key="i">
+              <div v-for="j in i" :key="j.name">
+                <li class="hover-bordered">
+                  <nuxt-link :to="j.url">
+                    <OtherVIcon class-icon="text-2xl w-10" :icon="j.icon" />
+                    <div class="text-base">
+                      {{ j.name }}
+                    </div>
+                  </nuxt-link>
+                </li>
+              </div>
+              <div v-if="i != dataNav[dataNav.length - 1]" class="divider px-5"></div>
             </div>
-            <div v-if="i != dataNav[dataNav.length - 1]" class="divider px-5"></div>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

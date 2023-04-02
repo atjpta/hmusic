@@ -6,15 +6,20 @@
           <OtherVNav @click="open = true" />
           <div @click="navigateTo('/')"
             class="lg:ml-10 btn btn-ghost bg-transparent hover:bg-transparent font-bold indicator">
-            <span
-              class="before:duration-500 before:block before:ring-4 before:ring-green-300/30 before:absolute before:-inset-1 before:-skew-x-12 before:-skew-y-6 before:rounded-tl-full before:rounded-br-full before:bg-gradient-to-r before:from-green-400 before:via-cyan-400 before:to-blue-400 relative inline-block">
-              <span
-                class="before:animate-ping before:w-6 before:h-6 before:rounded-full before:top-1 before:left-9 before:right-0.5 before:duration-500 before:block before:ring-4 before:ring-green-300/30 before:absolute before:-inset-1 before:bg-gradient-to-r before:from-green-400 before:via-cyan-400 before:to-blue-400 relative inline-block">
-                <span class="relative text-white text-lg px-3 z-10">Hmusic</span>
-              </span>
-            </span>
-            <div class="indicator-item top-5 bottom-0.5 right-16">
+            <div
+              class="w-20 h-9 duration-500 ring-4 ring-green-300/30 -skew-x-12 -skew-y-6 rounded-tl-full rounded-br-full bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400">
+            </div>
+            <div class="indicator-item top-1/2 right-1/2">
+              <div
+                class="animate-ping w-8 h-8 ring-4 ring-green-300/30 rounded-full bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400">
+              </div>
+            </div>
+
+            <div class="indicator-item top-1/2 right-1/2">
               <OtherVIcon class-icon="text-red-500 animate-spin text-3xl " icon="fa-solid fa-compact-disc" />
+            </div>
+            <div class="text-white font-extrabold px-3 indicator-item top-1/2 right-1/2 -skew-x-12 -skew-y-6">
+              Hmusic
             </div>
           </div>
         </div>
@@ -37,16 +42,5 @@
 </template>
 
 <script setup>
-import { authStore } from "~~/stores/auth.store";
-import { userStore } from "~~/stores/user.store";
-const useUser = userStore();
-const useAuth = authStore();
 const open = ref(false);
-
-onMounted(() => {
-  useAuth.loadAuthState();
-  if (useAuth.user) {
-    useUser.findOne(useAuth.user.id);
-  }
-});
 </script>

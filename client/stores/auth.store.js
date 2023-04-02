@@ -18,30 +18,12 @@ export const authStore = defineStore("authStore", {
             }
             else return null
         }
-        
-        // isAdmin(state) {
-        //     let temp = false;
-        //     if (state.user) {
-        //         state.user.roles.forEach(role => {
-        //             if (role == 'admin') {
-        //                 temp = true;
-        //                 return;
-        //             }
-        //         });
-        //     }
-        //     return temp;
-        // },
     },
     actions: {
         loadAuthState() {
             this.user = JSON.parse(localStorage.getItem("user"));
         },
 
-        // setAuthState(name, avatar) {
-        //     this.user.name = name
-        //     this.user.avatar_Url = avatar;
-        //     localStorage.setItem("user", JSON.stringify(this.user));
-        // },
         logout() {
             this.user = null;
             localStorage.removeItem("user");

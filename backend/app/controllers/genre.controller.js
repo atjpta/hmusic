@@ -22,7 +22,7 @@ exports.create = async (req, res, next) => {
 
 exports.findAll = async (req, res, next) => {
     try {
-        const document = await model.find()
+        const document = await model.find().sort({ 'createdAt': -1 })
         return res.json(document);
     } catch (error) {
         return next(

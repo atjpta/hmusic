@@ -3,7 +3,7 @@
 // chú ý chỉnh model, hàm create, select lại
 const mongoose = require("mongoose");
 const DB = require("../models");
-const model = DB.artist;
+const model = DB.user;
 const ObjectId = mongoose.Types.ObjectId;
 
 
@@ -25,7 +25,7 @@ exports.findOne = async (req, res, next) => {
     };
 
     try {
-        const document = await model.findOne(condition).select('name avatar_Url introduce')
+        const document = await model.findOne(condition).populate("role").select('name avatar_Url introduce role')
         if (!document) {
             return next(res.status(404).json({ Message: "không thể tìm thấy model" }));
         }

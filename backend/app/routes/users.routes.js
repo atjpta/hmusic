@@ -12,5 +12,5 @@ module.exports = (app) => {
         .put(ctl.update)
         .delete(ctl.deleteOne)
 
-    app.use("/api/artist", router);
+    app.use("/api/user", router);
 };

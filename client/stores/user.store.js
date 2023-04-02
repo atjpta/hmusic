@@ -10,11 +10,16 @@ export const userStore = defineStore("userStore", {
         };
     },
     getters: {
-
+        isAdmin(state) {
+            if (state.user?.role?.name == 'admin') {
+                return true
+            }
+            return false
+        }
     },
     actions: {
         async findOne(id) {
-            // this.user = await userService.findOne(id);
+            this.user = await userService.findOne(id);
         },
 
         clear() {

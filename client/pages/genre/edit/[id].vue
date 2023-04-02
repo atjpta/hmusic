@@ -1,0 +1,56 @@
+<template>
+    <div>
+        <GenreVEdit @save="save" :data="data" :loading="loading" />
+    </div>
+</template>
+
+<script setup>
+import { alertStore } from "~~/stores/alert.store";
+import { genreStore } from "~~/stores/genre.store";
+import { imageStore } from "~~/stores/image.store";
+const loading = ref(false);
+const data = ref({});
+const useModel = genreStore();
+const useImage = imageStore();
+const useAlert = alertStore();
+const route = useRoute();
+async function save() {
+    loading.value = true;
+
+    const dataS = {
+        id: data.value.id,
+        name: data.value.name,
+    };
+    if (useImage.url) {
+        await useImage.upload();
+        dataS.url_image = useImage.url;
+    }
+    if (dataS.name) {
+        try {
+            await useModel.update(dataS);
+            loading.value = false;
+            useAlert.setSuccess("sửa thành công");
+            navigateTo("/admin/genre");
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        useAlert.setWarning("bạn phải nhập đủ các tên và ảnh");
+    }
+}
+
+async function getApi() {
+    if (route.params.id) {
+        try {
+            data.value = await useModel.findOne(route.params.id);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+onMounted(() => {
+    getApi();
+});
+</script>
+
+<style></style>
