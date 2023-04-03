@@ -58,10 +58,10 @@ const menuAdmin = ref([
         title: "ca sĩ",
         url: "/singer",
     },
-    {
-        title: "nghệ sĩ",
-        url: "/artist",
-    },
+    // {
+    //     title: "nghệ sĩ",
+    //     url: "/artist",
+    // },
     {
         title: "quốc gia",
         url: "/country",

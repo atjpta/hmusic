@@ -16,7 +16,9 @@ const useAlert = alertStore();
 async function save() {
     loading.value = true;
 
-    await useImage.upload();
+    if (useImage.url) {
+        await useImage.upload();
+    }
     const dataS = {
         name: data.value.name,
         url_image: useImage.url,
@@ -24,7 +26,6 @@ async function save() {
     if (dataS.name && dataS.url_image) {
         try {
             await useModel.create(dataS);
-            loading.value = false;
             useAlert.setSuccess("Thêm thành công");
             navigateTo("/admin/genre");
         } catch (error) {
@@ -33,6 +34,7 @@ async function save() {
     } else {
         useAlert.setWarning("bạn phải nhập đủ các tên và ảnh");
     }
+    loading.value = false;
 }
 </script>
 

@@ -20,9 +20,20 @@ exports.create = async (req, res, next) => {
     }
 }
 
+exports.findAllSelect = async (req, res, next) => {
+    try {
+        const document = await model.find().select('id name').sort({ 'createdAt': -1 })
+        return res.json(document);
+    } catch (error) {
+        return next(
+            res.status(500).json({ Message: 'không  thể  lấy findAll' + error })
+        )
+    }
+};
+
 exports.findAll = async (req, res, next) => {
     try {
-        const document = await model.find()
+        const document = await model.find().sort({ 'createdAt': -1 })
         return res.json(document);
     } catch (error) {
         return next(

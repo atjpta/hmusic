@@ -36,11 +36,9 @@ const schema = mongoose.Schema(
         view: Intl,
         url: {
             type: String,
-            default: 'http://localhost:8088/api/song/Aki Misato - Snow Maiden (Sunoumewiden).mp3'
         },
-        img: {
+        url_image: {
             type: String,
-            default: 'http://localhost:8088/api/image/CARD VISIT.png',
         },
     },
     {

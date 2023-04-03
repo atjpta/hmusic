@@ -7,6 +7,21 @@ const url = config.url.api + '/genre'
 
 export default {
 
+    findAllSelect: async () => {
+        const { data: data, error } = await useFetch(url + `/select`, {
+            headers: {
+                authorization: authStore().getToken
+            },
+            method: "get",
+        })
+
+        if (error.value) {
+            useAlert.setError(error.value.data)
+            throw new Error(error.value.data);
+        }
+        return data.value
+    },
+
     create: async (dataO) => {
         const { data: data, error } = await useFetch(url, {
             headers: {
@@ -69,7 +84,7 @@ export default {
     },
 
 
-    findAll: async (id) => {
+    findAll: async () => {
         const { data: data, error } = await useFetch(url, {
             headers: {
                 authorization: authStore().getToken

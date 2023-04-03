@@ -2,7 +2,10 @@
   <div class="">
     <div>
       <div class="flex justify-between mb-2">
-        <div class="text-2xl uppercase font-bold mb-1">mới nhất</div>
+        <span
+          class="italic before:h-[98%] before:my-auto py-1 before:block before:absolute before:-inset-1 before:-skew-y-3 before:-skew-x-12 before:bg-gradient-to-r before:from-green-400 before:via-cyan-400 before:to-blue-400 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 relative inline-block">
+          <span class="relative text-white text-3xl font-black px-5">Mới nhất</span>
+        </span>
         <div class="btn btn-primary btn-outline btn-sm">xem thêm</div>
       </div>
       <div class="carousel space-x-5">

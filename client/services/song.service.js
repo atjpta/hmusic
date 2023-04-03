@@ -6,9 +6,15 @@ export default {
         let { error: uploadError } = await supabase.storage
             .from("hmusic-files/song")
             .upload(filePath, file);
-        if (uploadError) throw uploadError;
+        if (uploadError?.statusCode == 409) {
+            return
+        }
+        else if (uploadError) {
+            useAlert.setError(" lỗi upload ảnh: " + uploadError?.message);
+            throw uploadError;
+        }
 
-        useAlert.setSuccess("tải bài hát lên thành công");
+        // useAlert.setSuccess("tải ảnh lên thành công");
         return;
     },
 

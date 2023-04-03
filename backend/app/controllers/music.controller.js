@@ -14,7 +14,7 @@ exports.create = async (req, res, next) => {
         country: req.body.country,
         view: 0,
         url: req.body.url,
-        imgmusic: req.body.imgmusic,
+        url_image: req.body.url_image,
     })
     try {
         const document = modelO.save();

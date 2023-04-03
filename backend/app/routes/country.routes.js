@@ -9,6 +9,9 @@ module.exports = (app) => {
         .post(ctl.create)
         .delete(ctl.deleteAll)
 
+    router.route('/select')
+        .get(ctl.findAllSelect)
+
     router.route('/:id')
         .get(ctl.findOne)
         .put(ctl.update)

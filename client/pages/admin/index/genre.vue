@@ -55,7 +55,7 @@
 
 <script setup>
 import { genreStore } from "~~/stores/genre.store";
-import { dialogStore } from "../../../stores/dialog.store";
+import { dialogStore } from "~~/stores/dialog.store";
 
 const useDialog = dialogStore();
 const useModel = genreStore();

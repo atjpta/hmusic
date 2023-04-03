@@ -1,9 +1,9 @@
 <template>
   <div class="bg-cover bg-local" :style="`background-image: url(${urlImage})`">
     <div class="backdrop-blur-xl">
-      <OtherVAlert />
       <OtherVDialog />
       <OtherVHeader class="sticky top-0 z-10" />
+      <OtherVAlert />
       <div class="mx-5 lg:pl-60 mt-10">
         <!-- <button @click="randomImage" class="btn">get random image</button> -->
         <slot />

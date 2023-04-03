@@ -6,7 +6,7 @@
                 <div class="flex space-x-3">
                     <img class="w-32 h-32 rounded-2xl" :src="data.url_image" alt="" />
                     <!-- tên -->
-                    <div>{{ data.name }}</div>
+                    <div class="font-extrabold text-2xl">{{ data.name }}</div>
                 </div>
                 <div class="mr-5">
                     <nuxtLink :to="`/${route.path.slice(7, route.path.length)}/edit/${data.id}`" data-tip="sửa"

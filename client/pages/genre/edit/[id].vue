@@ -28,15 +28,15 @@ async function save() {
     if (dataS.name) {
         try {
             await useModel.update(dataS);
-            loading.value = false;
             useAlert.setSuccess("sửa thành công");
             navigateTo("/admin/genre");
         } catch (error) {
             console.log(error);
         }
     } else {
-        useAlert.setWarning("bạn phải nhập đủ các tên và ảnh");
+        useAlert.setWarning("bạn phải nhập tên");
     }
+    loading.value = false;
 }
 
 async function getApi() {

@@ -51,5 +51,9 @@ export const genreStore = defineStore("genreStore", {
         clear() {
             this.genre = {};
         },
+        async findAllSelect() {
+            this.list = await genreService.findAllSelect();
+
+        },
     }
 });

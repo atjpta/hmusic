@@ -3,7 +3,7 @@
     <!-- xem trước ảnh -->
     <transition name="bounce">
       <div>
-        <img class="bg-black/50 rounded-2xl my-2 mx-auto" :src="useImage.previewImage || data" alt="" />
+        <img class="bg-transparent rounded-2xl my-2 w-32 h-32" :src="useImage.previewImage || data" alt="" />
       </div>
     </transition>
     <!-- input ảnh -->
@@ -46,6 +46,10 @@ async function previewFiles(event) {
 function cancel() {
   useImage.reset();
 }
+
+onMounted(() => {
+  useImage.reset();
+});
 </script>
 
 <style>
