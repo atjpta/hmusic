@@ -81,12 +81,12 @@
             <div data-tip="phát lại bài này" class="tooltip flex btn btn-sm btn-circle btn-ghost hover:text-blue-400">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-rotate" />
             </div>
-            <div class="indicator">
+            <div class="indicator" @mouseenter="openVolume = true" @mouseleave="openVolume = false">
               <div @click="usePlay.mute()" class="flex text-success btn btn-sm btn-circle btn-ghost hover:text-blue-400">
                 <OtherVIcon class-icon="text-2xl " :icon="usePlay.iconVolume" />
               </div>
-              <div
-                class="flex items-center indicator-item z-10 -top-24 right-1/2 -rotate-90 bg-base-100 p-2 rounded-full">
+              <div v-show="openVolume"
+                class="flex items-center indicator-item z-10 -top-20 right-1/2 -rotate-90 bg-base-100 p-2 rounded-full">
                 <input type="range" min="0" max="1" step="0.1" v-model="usePlay.audio.volume"
                   class="range range-xs range-success w-40" />
               </div>
@@ -127,19 +127,7 @@ import { playStore } from "~~/stores/play.store";
 const usePlay = playStore();
 const audio = ref();
 const open = ref(true);
-const currentTime = computed(() => {
-  return usePlay.audio.currentTime;
-});
-
-const duration = computed(() => {
-  return usePlay.audio.duration;
-});
-
-// const maxTime = computed(() => {
-//   return usePlay.audio.duration;
-//   return usePlay.formatTime(usePlay.audio.duration) || "0";
-// });
-
+const openVolume = ref(false);
 onMounted(() => {
   usePlay.audio = audio.value;
 });
