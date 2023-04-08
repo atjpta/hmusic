@@ -12,11 +12,11 @@ module.exports = (app) => {
         .get(ctl.findOne)
         .put(ctl.update)
         .delete(ctl.deleteOne)
-    
-    router.route('/:type/:id/:page')
+
+    router.route('/:type/:id/:page/:size')
         .get(ctl.findAllTypePage)
 
-    router.route('/:page')
+    router.route('/:page/:size')
         .get(ctl.findAllPage)
 
     app.use("/api/music", router);

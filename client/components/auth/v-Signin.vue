@@ -9,12 +9,8 @@
             <div class="">
               <OtherVIcon class-icon="text-xl mt-2 mr-5" icon="fa-solid fa-user" />
             </div>
-            <Field
-              placeholder="tài khoản"
-              name="username"
-              type="text"
-              class="bg-white/5 border-0 border-b-2 border-primary text-xl mb-5 w-full"
-            />
+            <Field placeholder="tài khoản" name="username" type="text"
+              class="bg-white/5 border-0 border-b-2 border-primary text-xl mb-5 w-full" />
           </div>
           <div class="text-red-900 text-center">
             <ErrorMessage name="username" class="error-feedback" />
@@ -25,40 +21,23 @@
           <div class="">
             <OtherVIcon class-icon="text-xl mt-2 mr-5" icon="fa-solid fa-lock" />
           </div>
-          <Field
-            placeholder="mật khẩu"
-            name="password"
-            :type="showPassWord"
-            class="bg-white/5 border-0 border-b-2 border-primary text-xl mb-5 w-full"
-          />
+          <Field placeholder="mật khẩu" name="password" :type="showPassWord"
+            class="bg-white/5 border-0 border-b-2 border-primary text-xl mb-5 w-full" />
           <div @click="show()" class="btn btn-sm btn-ghost absolute w-fit right-5">
-            <OtherVIcon
-              v-if="showPassWord == 'password'"
-              class-icon="text-xl "
-              icon="fa-solid fa-eye"
-            />
-            <OtherVIcon
-              v-if="showPassWord == 'text'"
-              class-icon="text-xl "
-              icon="fa-solid fa-eye-slash"
-            />
+            <OtherVIcon v-if="showPassWord == 'password'" class-icon="text-xl " icon="fa-solid fa-eye" />
+            <OtherVIcon v-if="showPassWord == 'text'" class-icon="text-xl " icon="fa-solid fa-eye-slash" />
           </div>
         </div>
         <div class="text-red-900 text-center">
           <ErrorMessage name="password" class="error-feedback" />
         </div>
 
-        <div
-          class="text-center cursor-pointer hover:scale-125 duration-300 text-sky-500 hover:text-violet-500"
-        >
+        <div class="text-center cursor-pointer hover:scale-125 duration-300 text-sky-500 hover:text-violet-500">
           <NuxtLink to="/auth/signup" class=""> Chưa có tài khoản? </NuxtLink>
         </div>
 
         <div class="p-5 text-center">
-          <button
-            :class="[loading ? 'loading' : '']"
-            class="btn btn-primary btn-outline w-44"
-          >
+          <button :class="[loading ? 'loading' : '']" class="btn btn-primary btn-outline w-44">
             đăng nhập
           </button>
         </div>
@@ -95,7 +74,7 @@ async function handleLogin(user) {
   loading.value = true;
   try {
     await useAuth.signin(user);
-    // await useUser.findOne(useAuth.user.id);
+    await useUser.findOne(useAuth.user.id);
     const redirectPath = useRoute.redirectedFrom || {
       path: "/",
     };
@@ -114,5 +93,5 @@ function show() {
   } else showPassWord.value = "text";
 }
 
-onMounted(() => {});
+onMounted(() => { });
 </script>

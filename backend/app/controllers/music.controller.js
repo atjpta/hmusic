@@ -31,7 +31,7 @@ exports.findAll = async (req, res, next) => {
         const document = await model.find().populate({
             path: 'artist singer genre country',
             select: 'id name',
-        }).sort({ createdAt: -1 })
+        }).sort({ view: -1, createdAt: -1 })
         return res.json(document);
     } catch (error) {
         return next(
@@ -41,15 +41,15 @@ exports.findAll = async (req, res, next) => {
 };
 
 exports.findAllPage = async (req, res, next) => {
-    const { page } = req.params
+    const { page, size } = req.params
     try {
         const document = await model.find().populate({
             path: 'artist singer genre country',
             select: 'id name',
         })
-            .sort({ createdAt: -1 })
-            .limit(5)
-            .skip(5 * page)
+            .sort({ view: -1, createdAt: -1 })
+            .limit(size)
+            .skip(size * page)
         return res.json(document);
     } catch (error) {
         return next(
@@ -59,13 +59,13 @@ exports.findAllPage = async (req, res, next) => {
 };
 
 exports.findAllTypePage = async (req, res, next) => {
-    const { page, type, id } = req.params
+    const { page, type, id, size } = req.params
     try {
         const document = await model.find({ [type]: { $gte: id } })
             .populate('artist singer genre country', 'id name')
-            .sort({ createdAt: -1 })
-            .limit(5)
-            .skip(5 * page);
+            .sort({ view: -1, createdAt: -1 })
+            .limit(size)
+            .skip(size * page);
 
         if (!document) {
             return next(res.status(404).json({ Message: "không thể tìm thấy Music" }));

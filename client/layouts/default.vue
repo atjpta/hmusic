@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-cover bg-local" :style="`background-image: url(${urlImage})`">
+  <div class="bg-cover bg-local" :style="`background-image: url(${usePlay.song.url_image || usePlay.image})`">
     <div class="backdrop-blur-xl">
       <OtherVDialog />
       <OtherVHeader class="sticky top-0 z-10" />
@@ -15,21 +15,8 @@
 </template>
 
 <script setup>
-import { musicStore } from "~~/stores/music.store";
-
-const useMusic = musicStore();
-const indexImage = ref(1);
-
-const urlImage = computed(() => {
-  // return `bg-[url(${useMusic.url_image[indexImage.value]})]`;
-  return useMusic.url_image[indexImage.value];
-});
-
-function randomImage() {
-  indexImage.value = Math.ceil(Math.random() * 10);
-}
+import { playStore } from "~~/stores/play.store";
+const usePlay = playStore();
 </script>
 
 <style></style>
-
-:class="`bg-[url('${useMusic.url_image[indexImage.value]}')]`"

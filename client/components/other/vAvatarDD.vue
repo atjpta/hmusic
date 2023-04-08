@@ -18,7 +18,7 @@
           </div>
           <li></li>
 
-          <li class="hover-bordered" v-for="i in dataAvatar" :key="i">
+          <li class="hover-bordered" v-for="i in dataAvatarcComputed" :key="i">
             <NuxtLink v-if="i.name != 'Đăng xuất'" :to="i.url">
               <OtherVIcon :icon="i.icon"></OtherVIcon>
               {{ i.name }}
@@ -40,7 +40,7 @@ import { userStore } from "~~/stores/user.store";
 
 const useAuth = authStore();
 const useUser = userStore();
-const dataAvatar = ref([
+const dataAvatar = [
   {
     name: "dashboard",
     url: "/dashboard",
@@ -56,7 +56,22 @@ const dataAvatar = ref([
     url: "/auth/signin",
     icon: "fa-solid fa-right-from-bracket",
   },
-]);
+];
+
+const dataAvatarcComputed = computed(() => {
+  let list = [];
+  if (useUser.isAdmin) {
+    const admin = {
+      name: "admin",
+      url: "/admin/music",
+      icon: "fa-solid fa-bars-progress",
+    };
+    list = [admin, ...dataAvatar];
+  } else {
+    list = [...dataAvatar];
+  }
+  return list;
+});
 
 function logout() {
   useAuth.logout();
@@ -65,13 +80,8 @@ function logout() {
 async function getApi() {
   useAuth.loadAuthState();
   try {
-    await useUser.findOne(useAuth.user.id);
-    if (useUser.isAdmin) {
-      dataAvatar.value.unshift({
-        name: "admin",
-        url: "/admin/music",
-        icon: "fa-solid fa-bars-progress",
-      });
+    if (useAuth.user) {
+      await useUser.findOne(useAuth.user.id);
     }
   } catch (error) {
     console.log(error);

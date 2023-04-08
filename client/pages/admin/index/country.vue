@@ -26,10 +26,20 @@
 
         <div class="bg-base-100 rounded-2xl">
             <div class="rounded-2xl bg-gradient-to-r from-green-400/20 via-cyan-400/20 to-blue-400/20 p-5">
-                <div class="text-center" v-if="dataPerPage.length == 0">hông có dữ liệu</div>
-                <div v-for="(i, n) in dataPerPage" :key="i.id">
-                    <AdminVMono :loadingD="loadingD" @delete-one="deleteOne" :data="i" />
-                    <div v-if="n < dataPerPage.length - 1" class="divider my-0"></div>
+                <!-- skeletion -->
+                <div v-if="loadingSkeleton">
+                    <div v-for="(i, n) in size" :key="i.id">
+                        <AdminVSkeleton />
+                        <div v-if="n < size - 1" class="divider my-0"></div>
+                    </div>
+                </div>
+                <!-- dữ liệu sau khi goi api thành công -->
+                <div v-else>
+                    <div class="text-center" v-if="dataPerPage.length == 0">hông có dữ liệu</div>
+                    <div v-for="(i, n) in dataPerPage" :key="i.id">
+                        <AdminVMono :loadingD="loadingD" @delete-one="deleteOne" :data="i" />
+                        <div v-if="n < dataPerPage.length - 1" class="divider my-0"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,6 +69,7 @@ import { countryStore } from "~~/stores/country.store";
 
 const useDialog = dialogStore();
 const useModel = countryStore();
+const loadingSkeleton = ref(false);
 const size = 5;
 const loadingD = ref(false);
 const maxPage = computed(() => {
@@ -87,8 +98,10 @@ function goToNext() {
 }
 
 async function getApi() {
+    loadingSkeleton.value = true;
     try {
         await useModel.findAll();
+        loadingSkeleton.value = false;
     } catch (error) {
         console.log(error);
     }

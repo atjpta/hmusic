@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import musicService from "~~/services/music.service";
-import config from "~~/config";
 import { searchStore } from '~~/stores/search.store'
 const useSearch = searchStore()
 export const musicStore = defineStore("musicStore", {
@@ -53,6 +52,12 @@ export const musicStore = defineStore("musicStore", {
         },
         async findAll() {
             this.list = await musicService.findAll();
+        },
+        async findAllTypePage(type, id, page, size) {
+            this.list = await musicService.findAllTypePage(type, id, page, size);
+        },
+        async findAllPage(page, size) {
+            this.list = await musicService.findAllPage(page, size);
         },
         async update(data) {
             await musicService.update(data);

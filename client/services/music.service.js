@@ -84,4 +84,34 @@ export default {
         return data.value
     },
 
+    findAllTypePage: async (type, id, page, size) => {
+        const { data: data, error } = await useFetch(url + `/${type}/${id}/${page}/${size}`, {
+            headers: {
+                authorization: authStore().getToken
+            },
+            method: "get",
+        })
+
+        if (error.value) {
+            useAlert.setError(error.value.data)
+            throw new Error(error.value.data);
+        }
+        return data.value
+    },
+
+    findAllPage: async (page, size) => {
+        const { data: data, error } = await useFetch(url + `/${page}/${size}`, {
+            headers: {
+                authorization: authStore().getToken
+            },
+            method: "get",
+        })
+
+        if (error.value) {
+            useAlert.setError(error.value.data)
+            throw new Error(error.value.data);
+        }
+        return data.value
+    },
+
 } 
