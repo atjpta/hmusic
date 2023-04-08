@@ -60,29 +60,32 @@
         <div class="md:col-span-2 w-full">
           <!-- các nút btn -->
           <div class="flex items-center justify-center space-x-5">
-            <div class="flex btn btn-sm btn-circle btn-ghost hover:text-blue-400">
+            <div class="flex btn btn-sm btn-circle btn-ghost">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-heart" />
             </div>
-            <div data-tip="phát ngẫu nhiên" class="tooltip flex btn btn-sm btn-circle btn-ghost hover:text-blue-400">
+            <div @click="usePlay.random = !usePlay.random" data-tip="phát ngẫu nhiên"
+              :class="[usePlay.random ? 'text-success' : '']" class="tooltip flex btn btn-sm btn-circle btn-ghost">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-shuffle" />
             </div>
-            <div class="btn btn-sm btn-circle text-success btn-ghost hover:text-blue-400">
+            <div @click="usePlay.pre()" class="btn btn-sm btn-circle text-success btn-ghost">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-backward-step" />
             </div>
+            <!-- nút chơi nè -->
             <div @click="usePlay.playAudio()"
               class="btn btn-circle text-success btn-ghost hover:bg-transparent hover:text-blue-400">
               <OtherVIcon class-icon="text-4xl ring-4 ring-blue-400/50 hover:ring-green-400/50 rounded-full " :icon="
                 usePlay.play ? 'fa-solid fa-circle-pause' : 'fa-solid fa-circle-play'
               " />
             </div>
-            <div class="btn btn-sm btn-circle text-success btn-ghost hover:text-blue-400">
+            <div @click="usePlay.next()" class="btn btn-sm btn-circle text-success btn-ghost">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-forward-step" />
             </div>
-            <div data-tip="phát lại bài này" class="tooltip flex btn btn-sm btn-circle btn-ghost hover:text-blue-400">
+            <div @click="usePlay.loop = !usePlay.loop" :class="[usePlay.loop ? 'text-success' : '']"
+              data-tip="phát lại bài này" class="tooltip flex btn btn-sm btn-circle btn-ghost">
               <OtherVIcon class-icon="text-2xl " icon="fa-solid fa-rotate" />
             </div>
             <div class="indicator" @mouseenter="openVolume = true" @mouseleave="openVolume = false">
-              <div @click="usePlay.mute()" class="flex text-success btn btn-sm btn-circle btn-ghost hover:text-blue-400">
+              <div @click="usePlay.mute()" class="flex text-success btn btn-sm btn-circle btn-ghost">
                 <OtherVIcon class-icon="text-2xl " :icon="usePlay.iconVolume" />
               </div>
               <div v-show="openVolume"
@@ -106,15 +109,10 @@
             </div>
           </div>
         </div>
-        <!-- chỗ phát bài hát -->
-        <!-- <audio v-show="false" @canplay="onReadly = true" :muted="volume" @ended="endAudio()" ref="audio" controls
-        :loop="loop">
-        <source src="" type="audio/mpeg" />
-      </audio> -->
 
-        <audio @timeupdate="usePlay.timeUpdate()" @loadedmetadata="usePlay.loadedMetaData()"
-          @volumechange="usePlay.volumeChange()" v-show="false" @canplay="usePlay.onReadly = true" autoplay
-          :src="usePlay.song.url" ref="audio" controls>
+        <audio @ended="usePlay.nextEnd()" :loop="usePlay.loop" @timeupdate="usePlay.timeUpdate()"
+          @loadedmetadata="usePlay.loadedMetaData()" @volumechange="usePlay.volumeChange()" v-show="false"
+          :autoplay="true" :src="usePlay.song.url" ref="audio" controls>
           <source src="" type="audio/mpeg" />
         </audio>
       </div>
@@ -130,5 +128,10 @@ const open = ref(true);
 const openVolume = ref(false);
 onMounted(() => {
   usePlay.audio = audio.value;
+  usePlay.loadStore();
+});
+
+window.addEventListener("beforeunload", () => {
+  usePlay.saveStore();
 });
 </script>

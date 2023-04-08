@@ -19,12 +19,14 @@
 
 <script setup>
 import { musicStore } from "~~/stores/music.store";
+import { playStore } from "~~/stores/play.store";
 
 const useMusic = musicStore();
-
+const usePlay = playStore();
 async function getApi() {
   try {
     await useMusic.findAllPage(0, 5);
+    usePlay.setList(useMusic.list);
   } catch (error) {
     console.log(error);
   }

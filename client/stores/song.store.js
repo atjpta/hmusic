@@ -43,7 +43,8 @@ export const songStore = defineStore("songStore", {
             theReader.readAsDataURL(file);
             this.song = file
             const fileExt = file.name.split('.').pop()
-            this.name = this.convertToValidFileName(file.name.split('.')[0]) + `.${fileExt}`;
+            const fileName = file.name.split('.').slice(0, -1).join('.');
+            this.name = this.convertToValidFileName(fileName) + `.${fileExt}`;
             console.log(this.name);
             this.url = config.url.apiSong + this.name;
             console.log(this.url);
