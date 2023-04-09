@@ -29,7 +29,6 @@ export const playStore = defineStore("playStore", {
         loadStore() {
             const data = JSON.parse(localStorage.getItem("playStore"));
             if (data) {
-                this.play = data.play
                 this.song = data.song
                 this.list = data.list
                 this.duration = data.duration
@@ -46,7 +45,6 @@ export const playStore = defineStore("playStore", {
 
         saveStore() {
             localStorage.setItem("playStore", JSON.stringify({
-                play: this.play,
                 song: this.song,
                 list: this.list,
                 duration: this.duration,
@@ -169,7 +167,12 @@ export const playStore = defineStore("playStore", {
         },
 
         getRandom() {
-            const randomIndex = Math.floor(Math.random() * this.list.length);
+            let randomIndex
+            while (true) {
+                randomIndex = Math.floor(Math.random() * this.list.length);
+                if (randomIndex != this.indexCurrent)
+                    break;
+            }
             this.song = this.list[randomIndex];
             this.indexCurrent = randomIndex
         }
